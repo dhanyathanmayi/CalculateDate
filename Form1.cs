@@ -16,139 +16,90 @@ namespace CalculateDate
         {
             InitializeComponent();
         }
-
-        
+        //The date textbox leave event
         private void txtDate_Leave(object sender, EventArgs e)
         {
-            if (!checkValidaDate()) 
-            MessageBox.Show("invalid date format.please check the date u have entered!");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (checkValidaDate())
+            try
             {
-                int Day = 0, Month = 0, Year = 0, dayapart = 0, month1 = 0;
-                var txtdate = txtDate.Text;
-                int NoOfDays = txtDays.Text.ToInt();
-                if (txtdate.Contains('/') == true)
+                //checking whether the date is valid or not 
+                if (!clsCalculate.checkValidaDate(txtDate.Text))
                 {
-                    var arr = txtdate.Split('/');
-                    if (arr != null && arr.Length == 3)
-                    {
-                        Day = arr[0].ToInt(); Month = arr[1].ToInt(); Year = arr[2].ToInt();
-                        int NoOfDaysinaMonth = NoOfDaysInAMonth(Month, Year);
-                        Day = Day + NoOfDays;
-                        if (Day > NoOfDaysinaMonth)
-                        {
-                            int tmpDay = Day % NoOfDaysinaMonth;
-                            dayapart = Day / NoOfDaysinaMonth;
-                            Day = tmpDay;
-                        }
-                        if (dayapart > 0)
-                        {
-                            month1 = Month + dayapart;
-                            Month = Month + dayapart;
-                            Month = Month % 12;
-                        }
-
-                        Year = Year + (month1 / 12);
-                        string strDay = "", strMonth = "";
-                        strDay = (Day + "").Length < 2 ? ("0" + Day + "") : Day.ToString();
-                        strMonth = (Month + "").Length < 2 ? ("0" + (Month + "")) : Month.ToString();
-                        lblResult.Text = strDay + "/" + strMonth + "/" + Year;
-                    }
-
-                }
-                else
-                {
-                    lblResult.Text = "invalid date format. please use the format dd/MM/yyyy";
+                    txtDate.Text = "";
+                    MessageBox.Show("invalid date format.please check the date u have entered!");
                 }
             }
-
+            catch (Exception ex)
+            { 
+                // writing the log into the file
+                ex.WriteToFile();
+            }
         }
 
-
-        public bool checkValidaDate()
+        private void btnCalculate_Click(object sender, EventArgs e)
         {
-            bool isValid = true;
-            int Day = 0, Month = 0, Year = 0;
-            string txtdate = txtDate.Text;
-            if (txtdate.Contains('/') == true)
+            try
             {
-                var arr = txtdate.Split('/');
-                if (arr.Length == 3)
+                //checking whether the date is valid or not 
+                if (clsCalculate.checkValidaDate(txtDate.Text))
                 {
-                    Day = arr[0].ToInt(); Month = arr[1].ToInt(); Year = arr[2].ToInt();
-                    int NoOfDaysinaMonth = NoOfDaysInAMonth(Month, Year);
-                    if (Day > NoOfDaysinaMonth || Day <= 0)
+                    int Day = 0, Month = 0, Year = 0, dayapart = 0, month1 = 0;
+                    var txtdate = txtDate.Text;
+                    int NoOfDays = txtDays.Text.ToInt();
+                    //checking the date value contains '/'
+                    if (txtdate.Contains('/') == true)
                     {
-                        isValid = false;
+                        //spliting the date value with '/'
+                        var arr = txtdate.Split('/');
+                        //checking the array length and null
+                        if (arr != null && arr.Length == 3)
+                        {
+                            //setting the day, month & year
+                            Day = arr[0].ToInt(); Month = arr[1].ToInt(); Year = arr[2].ToInt();
+                            //Finding number of days in a month with user defined function NoOfDaysInAMonth 
+                            int NoOfDaysinaMonth = extender.NoOfDaysInAMonth(Month, Year);
+                            //Adding the number of days with Day 
+                            Day = Day + NoOfDays;
+                            if (Day > NoOfDaysinaMonth) // checking the day with number of days in month whether it is greater than or not 
+                            {
+                                // finding the number of days & months
+                                int tmpDay = Day % NoOfDaysinaMonth;
+                                dayapart = Day / NoOfDaysinaMonth;
+                                Day = tmpDay;
+                            }
+                            if (dayapart > 0)
+                            {
+                                // counting the value of a month
+                                month1 = Month + dayapart;
+                                Month = Month + dayapart;
+                                Month = Month % 12;
+                            }
+                            // finding the year
+                            Year = Year + (month1 / 12);
+                            string strDay = "", strMonth = "";
+
+                            // finding the new date value 
+                            strDay = (Day + "").Length < 2 ? ("0" + Day + "") : Day.ToString();
+                            strMonth = (Month + "").Length < 2 ? ("0" + (Month + "")) : Month.ToString();
+                            //Setting the new date value into the label
+                            lblResult.Text = strDay + "/" + strMonth + "/" + Year;
+                        }
                     }
-                    else if (Month > 12 || Month <= 0)
+                    else
                     {
-                        isValid = false;
-                    }
-                    else if ((Year + "").Length != 4)
-                    {
-                        isValid = false;
+                        MessageBox.Show("invalid date format.please check the date u have entered!");
                     }
                 }
                 else
                 {
-                    isValid = false;
+                    MessageBox.Show("invalid date format.please check the date u have entered!");
                 }
-            }
-            else
-            {
-                isValid = false;
-            }
-            return isValid;
-        }
 
-        public int NoOfDaysInAMonth(int month, int Year)
-        {
-            int NoofDaysinamonth = 0;
-            switch (month)
-            {
-                case 1:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 2:
-                    NoofDaysinamonth = Year % 4 == 0 ? 29 : 28;
-                    break;
-                case 3:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 4:
-                    NoofDaysinamonth = 30;
-                    break;
-                case 5:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 6:
-                    NoofDaysinamonth = 30;
-                    break;
-                case 7:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 8:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 9:
-                    NoofDaysinamonth = 30;
-                    break;
-                case 10:
-                    NoofDaysinamonth = 31;
-                    break;
-                case 11:
-                    NoofDaysinamonth = 30;
-                    break;
-                case 12:
-                    NoofDaysinamonth = 31;
-                    break;
             }
-            return NoofDaysinamonth;
+            catch (Exception ex)
+            {
+                // writing the log into the file
+                ex.WriteToFile();
+            }
         }
 
        

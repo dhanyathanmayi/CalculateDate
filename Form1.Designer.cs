@@ -33,7 +33,7 @@ namespace CalculateDate
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDays = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCalculate = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -71,22 +71,24 @@ namespace CalculateDate
             this.txtDays.Size = new System.Drawing.Size(53, 20);
             this.txtDays.TabIndex = 3;
             // 
-            // button1
+            // btnCalculate
             // 
-            this.button1.Location = new System.Drawing.Point(12, 110);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Check Date";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCalculate.Location = new System.Drawing.Point(12, 110);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.TabIndex = 4;
+            this.btnCalculate.Text = "Check Date";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.ForeColor = System.Drawing.Color.DarkGreen;
             this.lblResult.Location = new System.Drawing.Point(93, 115);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 13);
+            this.lblResult.Size = new System.Drawing.Size(80, 15);
             this.lblResult.TabIndex = 5;
             // 
             // label3
@@ -106,7 +108,7 @@ namespace CalculateDate
             this.ClientSize = new System.Drawing.Size(378, 186);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txtDays);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -124,7 +126,7 @@ namespace CalculateDate
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDays;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Label label3;
     }

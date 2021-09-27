@@ -8,3 +8,13 @@ E:\My Projects\C# Windows Projects\CalculateDate\obj\Debug\CalculateDate.csproj.
 E:\My Projects\C# Windows Projects\CalculateDate\obj\Debug\CalculateDate.csproj.CoreCompileInputs.cache
 E:\My Projects\C# Windows Projects\CalculateDate\obj\Debug\CalculateDate.exe
 E:\My Projects\C# Windows Projects\CalculateDate\obj\Debug\CalculateDate.pdb
+E:\My Projects\Git\CalculateDate\bin\Debug\CalculateDate.exe.config
+E:\My Projects\Git\CalculateDate\bin\Debug\CalculateDate.exe
+E:\My Projects\Git\CalculateDate\bin\Debug\CalculateDate.pdb
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.csprojAssemblyReference.cache
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.Form1.resources
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.Properties.Resources.resources
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.csproj.GenerateResource.cache
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.csproj.CoreCompileInputs.cache
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.exe
+E:\My Projects\Git\CalculateDate\obj\Debug\CalculateDate.pdb
